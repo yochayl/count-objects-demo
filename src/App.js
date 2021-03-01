@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+// import "./App.css";
+
+import CenteredGrid from "./Grid";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <CenteredGrid />;
 }
+
+// function App() {
+//   return (
+//     <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
+//       <header
+//         style={{
+//           marginBottom: "12px",
+//           fontSize: "xx-large",
+//           maxWidth: "60%",
+//           alignSelf: "center",
+//         }}
+//       >
+//         {" "}
+//         Count Object Demo
+//       </header>
+//       <div>
+//         <label>
+//           Name:
+//           <input type="text" name="name" />
+//         </label>
+//       </div>
+
+//       <div
+//         style={{
+//           display: "flex",
+//           maxWidth: "80%",
+//           alignSelf: "center",
+//           width: "inherit",
+//         }}
+//       >
+//         <Demo></Demo>
+//       </div>
+//     </div>
+//   );
+// }
 
 export default App;
