@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/count-objects-demo/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/count-objects-demo/static/js/main.46326a70.chunk.js",
+    "main.js.map": "/count-objects-demo/static/js/main.46326a70.chunk.js.map",
+    "runtime-main.js": "/count-objects-demo/static/js/runtime-main.e2329a20.js",
+    "runtime-main.js.map": "/count-objects-demo/static/js/runtime-main.e2329a20.js.map",
+    "static/js/2.99696cf8.chunk.js": "/count-objects-demo/static/js/2.99696cf8.chunk.js",
+    "static/js/2.99696cf8.chunk.js.map": "/count-objects-demo/static/js/2.99696cf8.chunk.js.map",
+    "static/js/3.2f00dd44.chunk.js": "/count-objects-demo/static/js/3.2f00dd44.chunk.js",
+    "static/js/3.2f00dd44.chunk.js.map": "/count-objects-demo/static/js/3.2f00dd44.chunk.js.map",
+    "index.html": "/count-objects-demo/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/count-objects-demo/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.99696cf8.chunk.js.LICENSE.txt": "/count-objects-demo/static/js/2.99696cf8.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e2329a20.js",
+    "static/js/2.99696cf8.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.46326a70.chunk.js"
+  ]
+}
