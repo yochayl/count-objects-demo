@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-
+import npm from "./assets/npm.png";
 import {
   Chip,
   Grid,
@@ -336,12 +336,7 @@ export function Demo() {
             target="_blank"
             rel="noreferrer"
           >
-            <Box
-              component="img"
-              src="count-objects-demo/npm.png"
-              width="8%"
-              height="8%"
-            />
+            <Box component="img" src={npm} alt="NPM" width="8%" height="8%" />
           </a>
         </Box>
       </Box>
