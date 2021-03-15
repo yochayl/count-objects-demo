@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import npm from "./assets/npm.png";
+import github from "./assets/github.png";
 import {
   Chip,
   Grid,
@@ -8,7 +9,7 @@ import {
   Box,
   Button,
   CircularProgress,
-  IconButton,
+  Paper,
 } from "@material-ui/core";
 import { DataGrid } from "@material-ui/data-grid";
 import "date-fns";
@@ -330,14 +331,41 @@ export function Demo() {
         <Box component="h1" className={classes.header}>
           Count Objects Demo
         </Box>
-        <Box component="h5" className={classes.header}>
-          <a
-            href="https://www.npmjs.com/package/count-objects"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Box component="img" src={npm} alt="NPM" width="8%" height="8%" />
-          </a>
+        <Box className={classes.header}>
+          <Grid item xs={12}>
+            <Grid container justify="center" spacing={2}>
+              <Grid item>
+                <a
+                  href="https://www.npmjs.com/package/count-objects"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Box
+                    component="img"
+                    src={npm}
+                    alt="NPM"
+                    width="64px"
+                    height="64px"
+                  />
+                </a>
+              </Grid>
+              <Grid item>
+                <a
+                  href="https://github.com/yochayl/count-objects-demo"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Box
+                    component="img"
+                    src={github}
+                    alt="GitHub"
+                    width="64px"
+                    height="64px"
+                  />
+                </a>
+              </Grid>
+            </Grid>
+          </Grid>
         </Box>
       </Box>
     );

@@ -7,4 +7,4 @@ mkdir docs
 cp -r ./build/* ./docs/
 
 git add docs/.
-git commit --amend
+git commit --amend --no-edit
