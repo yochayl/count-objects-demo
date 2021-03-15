@@ -8,6 +8,7 @@ import {
   Box,
   Button,
   CircularProgress,
+  IconButton,
 } from "@material-ui/core";
 import { DataGrid } from "@material-ui/data-grid";
 import "date-fns";
@@ -335,7 +336,12 @@ export function Demo() {
             target="_blank"
             rel="noreferrer"
           >
-            NPM
+            <Box
+              component="img"
+              src="count-objects-demo/npm.png"
+              width="8%"
+              height="8%"
+            />
           </a>
         </Box>
       </Box>
