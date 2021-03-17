@@ -156,6 +156,7 @@ export function Demo() {
   const [startTime, setStartTime] = useState(initStartTime);
   const [table, setTable] = useState([]);
   const [filters, setFilters] = useState([]);
+  const [filtersCount, setFiltersCount] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedDate, setSelectedDate] = React.useState(
     new Date(initStartTime)
@@ -214,6 +215,9 @@ export function Demo() {
         JSON.parse(JSON.stringify(countObjects.getFilters()))
       );
     });
+    setFiltersCount(() => {
+      return countObjects.filtersCount();
+    });
   }, [countObjects]);
 
   // query more
@@ -265,7 +269,7 @@ export function Demo() {
   };
 
   const Filters = () => {
-    return filters.map((filter) => {
+    return filters.map((filter, idx) => {
       return (
         <Box
           component="li"
@@ -273,7 +277,7 @@ export function Demo() {
           key={filter.label}
         >
           <Chip
-            label={filter.label}
+            label={`${filter.label} (${filtersCount[idx]})`}
             onDelete={handleDelete(filter)}
             className={classes.chip}
           />
