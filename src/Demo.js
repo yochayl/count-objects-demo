@@ -9,7 +9,6 @@ import {
   Box,
   Button,
   CircularProgress,
-  Paper,
 } from "@material-ui/core";
 import { DataGrid } from "@material-ui/data-grid";
 import "date-fns";
@@ -67,12 +66,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   header: {
-    padding: theme.spacing(1),
+    padding: theme.spacing(0),
     textAlign: "center",
     color: theme.palette.text.secondary,
-  },
-  chip: {
-    background: "#eadce6",
   },
   chipContainer: {
     display: "flex",
@@ -101,16 +97,20 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
     width: 200,
   },
+  totalCount: {
+    paddingBottom: theme.spacing(1),
+  },
 }));
 
-const decorateFilters = (filters) => {
+const decorateFilters = (filters, filtersType) => {
   const chips = [];
   for (const filter of filters) {
     const id = JSON.stringify(filter);
-    const value = filter.pop();
+    const type = filtersType[id];
+    const value = type === "value" ? filter.pop() : null;
     const key = filter.join(".");
-    const keyVal = `${key} - ${value}`;
-    chips.push({ key: id, label: keyVal });
+    const keyVal = type === "value" ? `${key} - ${value}` : `${key}`;
+    chips.push({ key: id, label: keyVal, type });
   }
   return chips;
 };
@@ -156,6 +156,7 @@ export function Demo() {
   const [startTime, setStartTime] = useState(initStartTime);
   const [table, setTable] = useState([]);
   const [filters, setFilters] = useState([]);
+  const [filtersType, setFiltersType] = useState({});
   const [filtersCount, setFiltersCount] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedDate, setSelectedDate] = React.useState(
@@ -179,8 +180,15 @@ export function Demo() {
   };
 
   const handleFilter = (key, value) => {
-    const filter = [...key.split("."), value];
+    const type = value ? "value" : "key";
+    const filter = [...key.split(".")];
+    if (type === "value") {
+      filter.push(value);
+    }
     const filterStr = JSON.stringify(filter);
+    setFiltersType((filtersType) => {
+      return { ...filtersType, [filterStr]: type };
+    });
     setCountObjects((co) => {
       const existingFiltersStr = co
         .getFilters()
@@ -212,7 +220,8 @@ export function Demo() {
     );
     setFilters(() => {
       return decorateFilters(
-        JSON.parse(JSON.stringify(countObjects.getFilters()))
+        JSON.parse(JSON.stringify(countObjects.getFilters())),
+        filtersType
       );
     });
     setFiltersCount(() => {
@@ -243,8 +252,15 @@ export function Demo() {
           rows={table}
           columns={columns}
           pageSize={50}
-          onRowSelected={(event) => {
-            handleFilter(event.data.key, event.data.value);
+          onCellClick={(event) => {
+            const { field, row } = event;
+            const { key, value } = row;
+            if (field === "key") {
+              handleFilter(key);
+            }
+            if (field === "value") {
+              handleFilter(key, value);
+            }
           }}
           HorizontalAlignment="Stretch"
           HorizontalContentAlignment="Stretch"
@@ -270,6 +286,7 @@ export function Demo() {
 
   const Filters = () => {
     return filters.map((filter, idx) => {
+      const backgroundColor = filter.type === "value" ? "#dce7ea" : "#eadce6";
       return (
         <Box
           component="li"
@@ -279,7 +296,7 @@ export function Demo() {
           <Chip
             label={`${filter.label} (${filtersCount[idx]})`}
             onDelete={handleDelete(filter)}
-            className={classes.chip}
+            style={{ background: backgroundColor }}
           />
         </Box>
       );
@@ -306,7 +323,7 @@ export function Demo() {
 
   const TotalCount = () => {
     return isLoading ? null : (
-      <Box>
+      <Box className={classes.totalCount}>
         <Box component="span">Total Count: </Box>
         <Box component="span"> {totalCount}</Box>
       </Box>
