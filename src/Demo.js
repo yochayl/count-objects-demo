@@ -350,6 +350,9 @@ export function Demo() {
     return (
       <Box>
         <Box component="h1" className={classes.header}>
+          Earthquakes
+        </Box>
+        <Box component="h3" className={classes.header}>
           Count Objects Demo
         </Box>
         <Box className={classes.header}>
