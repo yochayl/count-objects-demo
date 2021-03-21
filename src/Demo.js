@@ -28,24 +28,23 @@ const getNextDay = (date) => {
     .split("T")[0];
 };
 
-const width = 300;
 const columns = [
   {
     headerName: "Key",
     field: "key",
-    width,
+    flex: 1,
     headerClassName: "super-app-theme--header",
   },
   {
     headerName: "Value",
     field: "value",
-    width,
+    flex: 1,
     headerClassName: "super-app-theme--header",
   },
   {
     headerName: "Count",
     field: "count",
-    width,
+    flex: 1,
     headerClassName: "super-app-theme--header",
   },
 ];
@@ -247,7 +246,7 @@ export function Demo() {
 
   const Table = () => {
     return (
-      <Box style={{ height: 400, width: 900 }}>
+      <Box style={{ height: 400, width: "100%" }}>
         <DataGrid
           rows={table}
           columns={columns}
@@ -412,10 +411,10 @@ export function Demo() {
       ) : (
         <Box>
           <Grid container>
-            <Grid item xs={2}>
+            <Grid item xs={3}>
               <QueryMore />
             </Grid>
-            <Grid item xs={10}>
+            <Grid item xs={9}>
               <Grid container>
                 <Filters />
               </Grid>
