@@ -137,7 +137,7 @@ const decorateData = (data) => {
       place: place.split(", ").pop().toLowerCase(),
       type,
       tsunami,
-      alert,
+      alert: alert || undefined,
       date,
       sources: sources.split(",").reduce((acc, src) => {
         if (src) {
