@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/count-objects-demo/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/count-objects-demo/static/js/main.a533b899.chunk.js",
-    "main.js.map": "/count-objects-demo/static/js/main.a533b899.chunk.js.map",
+    "main.js": "/count-objects-demo/static/js/main.b2a5ad97.chunk.js",
+    "main.js.map": "/count-objects-demo/static/js/main.b2a5ad97.chunk.js.map",
     "runtime-main.js": "/count-objects-demo/static/js/runtime-main.ea531769.js",
     "runtime-main.js.map": "/count-objects-demo/static/js/runtime-main.ea531769.js.map",
-    "static/js/2.6567ae19.chunk.js": "/count-objects-demo/static/js/2.6567ae19.chunk.js",
-    "static/js/2.6567ae19.chunk.js.map": "/count-objects-demo/static/js/2.6567ae19.chunk.js.map",
+    "static/js/2.7455f26a.chunk.js": "/count-objects-demo/static/js/2.7455f26a.chunk.js",
+    "static/js/2.7455f26a.chunk.js.map": "/count-objects-demo/static/js/2.7455f26a.chunk.js.map",
     "static/js/3.02d63f57.chunk.js": "/count-objects-demo/static/js/3.02d63f57.chunk.js",
     "static/js/3.02d63f57.chunk.js.map": "/count-objects-demo/static/js/3.02d63f57.chunk.js.map",
     "index.html": "/count-objects-demo/index.html",
     "static/css/main.6dea0f05.chunk.css.map": "/count-objects-demo/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.6567ae19.chunk.js.LICENSE.txt": "/count-objects-demo/static/js/2.6567ae19.chunk.js.LICENSE.txt"
+    "static/js/2.7455f26a.chunk.js.LICENSE.txt": "/count-objects-demo/static/js/2.7455f26a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ea531769.js",
-    "static/js/2.6567ae19.chunk.js",
+    "static/js/2.7455f26a.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.a533b899.chunk.js"
+    "static/js/main.b2a5ad97.chunk.js"
   ]
 }
