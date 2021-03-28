@@ -49,10 +49,10 @@ const columns = [
   },
 ];
 
-const getUrl = ({ startTime }) => {
-  const endTime = getNextDay(startTime);
+const getUrl = ({ endDate }) => {
+  const endTime = getNextDay(endDate);
   return encodeURI(
-    `https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=${startTime}&endtime=${endTime}`
+    `https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=${endDate}&endtime=${endTime}`
   );
 };
 
@@ -114,6 +114,18 @@ const decorateFilters = (filters, filtersType) => {
   return chips;
 };
 
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toLocaleString("en-US", {
+    minimumIntegerDigits: 2,
+  });
+  const day = date.getDate().toLocaleString("en-US", {
+    minimumIntegerDigits: 2,
+  });
+  return `${day}/${month}/${year}`;
+};
+
 const decorateData = (data) => {
   const { features } = data;
   return features.map((feat) => {
@@ -152,7 +164,7 @@ const decorateData = (data) => {
 export function Demo() {
   const [countObjects, setCountObjects] = useState(new CountObjects([]));
   const [totalCount, setTotalCount] = useState(0);
-  const [startTime, setStartTime] = useState(initStartTime);
+  const [endDate, setEndDate] = useState(initStartTime);
   const [table, setTable] = useState([]);
   const [filters, setFilters] = useState([]);
   const [filtersType, setFiltersType] = useState({});
@@ -164,7 +176,7 @@ export function Demo() {
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    setStartTime(() => {
+    setEndDate(() => {
       return new Date(date).toISOString().split("T")[0];
     });
     setTotalCount(0);
@@ -203,7 +215,7 @@ export function Demo() {
 
   const handleQueryMore = () => {
     setIsLoading(() => true);
-    setStartTime(() => getNextDay(startTime));
+    setEndDate(() => getNextDay(endDate));
   };
 
   // update table
@@ -231,7 +243,7 @@ export function Demo() {
   // query more
   useEffect(() => {
     const getDate = async () => {
-      const url = getUrl({ startTime });
+      const url = getUrl({ endDate });
       const results = await fetch(url);
       const data = await results.json();
       const cleanData = decorateData(data);
@@ -240,7 +252,7 @@ export function Demo() {
       setIsLoading(false);
     };
     getDate();
-  }, [startTime, selectedDate]);
+  }, [endDate, selectedDate]);
 
   const classes = useStyles();
 
@@ -321,10 +333,21 @@ export function Demo() {
   };
 
   const TotalCount = () => {
-    return isLoading ? null : (
+    return (
       <Box className={classes.totalCount}>
         <Box component="span">Total Count: </Box>
         <Box component="span"> {totalCount}</Box>
+      </Box>
+    );
+  };
+
+  const EndDate = () => {
+    return (
+      <Box className={classes.totalCount}>
+        <Box component="span" style={{ marginRight: "17px" }}>
+          End Date:{" "}
+        </Box>
+        <Box component="span"> {formatDate(endDate)}</Box>
       </Box>
     );
   };
@@ -420,6 +443,7 @@ export function Demo() {
               </Grid>
             </Grid>
           </Grid>
+          <EndDate />
           <TotalCount />
           <Table />
           <DataSource />
