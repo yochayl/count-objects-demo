@@ -146,7 +146,7 @@ const decorateData = (data) => {
     return {
       status: status.toLowerCase(),
       mag: Math.round(mag * 10) / 10,
-      place: place.split(", ").pop().toLowerCase(),
+      place: typeof place === 'string' && place.split(", ").pop().toLowerCase(),
       type,
       tsunami,
       alert: alert || undefined,
